@@ -15,9 +15,8 @@ class Utility{
     constructor(){
         this.version='0.1.6'
         this.crypto=new Crypto();
-        this.http=new Http();
-        this.qrcode=new Qrcode();
-
+        //this.http=new Http();
+        //this.qrcode=new Qrcode();
     }
     //类型判断----------------------------------------------
     //整数
