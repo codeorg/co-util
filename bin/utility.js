@@ -3,16 +3,21 @@
  */
 "use strict";
 //const Crypto = require('./Crypto');
-let Crypto=require('./crypto');
-let uuid = require('node-uuid');
-let _ = require('lodash');
-let moment=require('moment');
-let mkdirp = require('mkdirp');
-let rimraf = require('rimraf');
-
+const Crypto=require('./crypto');
+const uuid = require('node-uuid');
+const _ = require('lodash');
+const moment=require('moment');
+const mkdirp = require('mkdirp');
+const rimraf = require('rimraf');
+const Http=require('./http');
+const Qrcode=require('./qrcode');
 class Utility{
     constructor(){
-        this._crypto=new Crypto();
+        this.version='0.1.6'
+        this.crypto=new Crypto();
+        this.http=new Http();
+        this.qrcode=new Qrcode();
+
     }
     //类型判断----------------------------------------------
     //整数
@@ -44,6 +49,17 @@ class Utility{
         if (!value) return false;
         let dt = new Date(value);
         return dt != 'Invalid Date';
+    }
+
+    isNullObj(obj) {
+        if (!obj) return true;
+        if (typeof obj === 'object') {
+            for (var key in obj) {
+                return false;
+            }
+            return true;
+        }
+        return false;
     }
     //转化类型----------------------------------------------
     toInt(value) {
@@ -112,6 +128,11 @@ class Utility{
         return ip;
     }
 
+    formatObj(obj) {
+        if (this.isNullObj(obj)) return null;
+        return obj;
+    }
+
     //获取距离1970-1-1的ms(以天为单位)
     dayTime(date) {
         if (!date)date = new Date();
@@ -164,6 +185,24 @@ class Utility{
         return _.concat.apply(this, objs);
     }
 
+    random(start, end) {
+        return _.random(start, end)
+    }
+
+    indexOf(arr, value) {
+        return _.indexOf(arr, value);
+    }
+
+    findIndex(arr, obj) {
+        return _.findIndex(arr, obj);
+    }
+
+    find(arr, obj) {
+        return _.find(arr, obj);
+    }
+
+
+
 
 
     // 文件操作----------------------------------------------
@@ -192,34 +231,6 @@ class Utility{
         })
     }
 
-    //加密----------------------------------------------
-    md5(str) {
-        return this._crypto.md5(str);
-    }
-
-    hmac(str, key) {
-        return this._crypto.hmac(str, key);
-    }
-
-    aesEncrypt(str, key) {
-        return this._crypto.aesEncrypt(str, key);
-    }
-
-
-    aesDecrypt(str, key) {
-        return this._crypto.aesDecrypt(str, key);
-    }
-
-    saltEncrypt(str) {
-        return this._crypto.saltEncrypt(str);
-    }
-
-    saltCompare(str, salted) {
-        return this._crypto.saltCompare(str, salted);
-    }
-
-
-
     //ctx 相关----------------------------------------------
     querystring(obj) {
         let arr = []
@@ -227,6 +238,24 @@ class Utility{
             arr.push(this.format('%s=%s', key, obj[key]));
         }
         return arr.join('&');
+    }
+
+    //对象排序
+    sort(obj) {
+        if (_.isArray(obj)) return _.sortBy(obj);
+        let o = {};
+        var arr = _.sortBy(_.keys(obj));
+        _.forEach(arr, function (value) {
+            o[value] = obj[value];
+        });
+        return o
+    }
+
+    //获取签名
+    sign(obj,key){
+        let o=this.sort(obj);
+        let str=this.querystring(o);
+        return this.hmac(str,key);
     }
 
     body(data) {
@@ -250,8 +279,23 @@ class Utility{
     }
     guid(){
         let str = uuid.v4();
-        return str;
+        return this.md5(str);
+    }
+    //http
+    get(url){
+        console.log(url);
     }
 
+
+
+
+
+
+
+
+
+
+
 }
+
 module.exports =new Utility();
