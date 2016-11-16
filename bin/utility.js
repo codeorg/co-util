@@ -9,12 +9,11 @@ const _ = require('lodash');
 const moment=require('moment');
 const mkdirp = require('mkdirp');
 const rimraf = require('rimraf');
-const Http=require('./http');
-const Qrcode=require('./qrcode');
+
 class Utility{
     constructor(){
         this.version='0.1.6'
-        this.crypto=new Crypto();
+        this._crypto=new Crypto();
         //this.http=new Http();
         //this.qrcode=new Qrcode();
     }
@@ -280,21 +279,25 @@ class Utility{
         let str = uuid.v4();
         return this.md5(str);
     }
-    //http
-    get(url){
-        console.log(url);
+    //加密----------------------------------------------
+    md5(str) {
+        return this._crypto.md5(str);
     }
-
-
-
-
-
-
-
-
-
-
-
+    hmac(str, key) {
+        return this._crypto.hmac(str, key);
+    }
+    aesEncrypt(str, key) {
+        return this._crypto.aesEncrypt(str, key);
+    }
+    aesDecrypt(str, key) {
+        return this._crypto.aesDecrypt(str, key);
+    }
+    saltEncrypt(str) {
+        return this._crypto.saltEncrypt(str);
+    }
+    saltCompare(str, salted) {
+        return this._crypto.saltCompare(str, salted);
+    }
 }
 
 module.exports =new Utility();
