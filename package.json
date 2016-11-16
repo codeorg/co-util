@@ -19,5 +19,13 @@
   "bugs": {
     "url": "https://github.com/codeorg/co-util/issues"
   },
-  "homepage": "https://github.com/codeorg/co-util#readme"
+  "homepage": "https://github.com/codeorg/co-util#readme",
+  "dependencies": {
+    "bcrypt": "^0.8.7",
+    "lodash": "^4.17.2",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.16.0",
+    "node-uuid": "^1.4.7",
+    "rimraf": "^2.5.4"
+  }
 }
