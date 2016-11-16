@@ -1,0 +1,23 @@
+{
+  "name": "co-util",
+  "version": "0.1.5",
+  "description": "codeorg utility ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeorg/co-util.git"
+  },
+  "keywords": [
+    "utility",
+    "nodejs"
+  ],
+  "author": "codeorg.com",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codeorg/co-util/issues"
+  },
+  "homepage": "https://github.com/codeorg/co-util#readme"
+}
