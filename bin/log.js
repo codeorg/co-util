@@ -1,10 +1,6 @@
 /**
  * Created by Administrator on 2016/11/17.
  */
-
-/**
- * Created by Administrator on 2016/11/17.
- */
 const fs=require('./fs');
 const log4js = require('log4js');
 class Log{

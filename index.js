@@ -21,7 +21,7 @@ global.$config={
         "101":"router:路由格式有误,出错url:%s",
     }
 }
-
+//dddd土ddddddddddd
 
 
 if(!global.$config||!global.$config.log||!global.$config.errs) {
