@@ -16,10 +16,7 @@ class Utility{
         this._opts=opts;
         this.version='0.1.6'
         this._crypto=new Crypto();
-
         this._log=new Log({path:this._opts.log.path});
-        //this.http=new Http();
-        //this.qrcode=new Qrcode();
     }
     //类型判断----------------------------------------------
     //整数
@@ -165,25 +162,36 @@ class Utility{
 
 
     //扩展对象，不创建新对象
+    //扩展到第一个对象
     extend(...objs) {
-        if (!objs || objs.length == 0) return;
-        let obj = objs[0];
-        for (let i = 1; i < objs.length; i++) {
-            _.assignIn(obj, objs[i]);
-        }
-        return obj;
+        return _.assignIn.apply(this,objs);
     }
 
     //合并并且创建新对象
-    assignIn(...objs) {
+    concatObj(...objs) {
+        objs=objs||[];
         let o = {};
-        _.assignIn(o, objs[0]);
-        objs[0] = o;
-        return this.extend.apply(this, objs);
+        objs.unshift(o);
+        return this.extend(...objs);
     }
 
-    //合并
-    concat(...objs) {
+    /**
+     * 合并数组
+     * @param {Array} array The array to concatenate.
+     * @param {...*} [values] The values to concatenate.
+     * @returns {Array} Returns the new concatenated array.
+     * @example
+     *
+     * var array = [1];
+     * var other = _.concat(array, 2, [3], [[4]]);
+     *
+     * console.log(other);
+     * // => [1, 2, 3, [4]]
+     *
+     * console.log(array);
+     * // => [1]
+     */
+    concatArr(...objs) {
         return _.concat.apply(this, objs);
     }
 
