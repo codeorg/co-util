@@ -2,7 +2,6 @@
  * Created by Codeorg.com on 2016/11/14.
  */
 "use strict";
-
 global.$config={
     log:{path:require('path').join(__dirname,'./logs/')},
     errs:{
