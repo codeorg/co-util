@@ -4,16 +4,20 @@
 "use strict";
 //const Crypto = require('./Crypto');
 const Crypto=require('./crypto');
+const Log=require('./log');
+const fs=require('./fs');
 const uuid = require('node-uuid');
 const _ = require('lodash');
 const moment=require('moment');
-const mkdirp = require('mkdirp');
-const rimraf = require('rimraf');
+
 
 class Utility{
-    constructor(){
+    constructor(opts){
+        this._opts=opts;
         this.version='0.1.6'
         this._crypto=new Crypto();
+
+        this._log=new Log({path:this._opts.log.path});
         //this.http=new Http();
         //this.qrcode=new Qrcode();
     }
@@ -198,35 +202,14 @@ class Utility{
     find(arr, obj) {
         return _.find(arr, obj);
     }
-
-
-
-
-
     // 文件操作----------------------------------------------
     // 异步创建目录
     mkdir(dirname, mode) {
-        return new Promise((resolve,reject)=>{
-            mkdirp(dirname, mode, function (err) {
-                if(err){
-                    reject(err)
-                }else{
-                    resolve(true);
-                }
-            });
-        })
+        return fs.mkdir(dirname, mode);
     }
     //异步删除整个目录
     rmdir(dirname) {
-        return new Promise((resolve,reject)=>{
-            rimraf(dirname,  function (err) {
-                if(err){
-                    reject(err)
-                }else{
-                    resolve(true);
-                }
-            });
-        })
+        return fs.rmdir(dirname);
     }
 
     //ctx 相关----------------------------------------------
@@ -267,12 +250,12 @@ class Utility{
                 if (i > 0) arr.push(arguments[i]);
             }
         }
-        code = (typeof code !== "string") ? code.toString() : code;
-        var errMsg = errs[code.toString()];
-        errMsg = !errMsg ? "该错误编码是不存在" : errMsg;
+        //code = (typeof code !== "string") ? code.toString() : code;
+        var formatMsg = this._opts.errs[code.toString()];
+        formatMsg = !formatMsg ? "该错误编码是不存在" : formatMsg;
         return {
             err: code,
-            msg: this.format(errMsg, arr)
+            msg: this.format(formatMsg, arr)
         };
     }
     guid(){
@@ -298,6 +281,10 @@ class Utility{
     saltCompare(str, salted) {
         return this._crypto.saltCompare(str, salted);
     }
+    //日志
+    log(...args){
+        this._log.error(...args);
+    }
 }
 
-module.exports =new Utility();
+module.exports =Utility;
