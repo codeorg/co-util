@@ -33,7 +33,7 @@ let util=new Utility(global.$config);
 //console.log(util.err(8))
 
 //let obj={};
-//util.concatObj(obj,{aa:1},{bb:22},{cc:44})
+
 //console.log(util.concatObj(obj,{aa:1},{bb:22},{cc:44}))
 
 module.exports=util;
