@@ -29,12 +29,12 @@ class Util{
 
     //是否Json对象，包含数组
     isObject(value) {
-        _.isObject(value)
+        return _.isObject(value)
     }
 
     //是否Json对象
     isPlainObject(value) {
-        _.isPlainObject(value)
+        return _.isPlainObject(value)
     }
 
     //是否日期
