@@ -12,6 +12,10 @@ class Util{
         this.version='0.1.6'
         this._crypto=new Crypto();
     }
+    use(fn){
+        if (typeof fn !== 'function') throw new TypeError('middleware must be a function!');
+        fn(this);
+    }
     //类型判断----------------------------------------------
     //整数
     isInt(value) {
@@ -241,9 +245,9 @@ class Util{
         return this.hmac(str,key);
     }
 
-    body(data) {
-        return {data: data};
-    }
+    // body(data) {
+    //     return {data: data};
+    // }
 
 
     guid(){
@@ -271,6 +275,15 @@ class Util{
     }
 
 }
-let util=new Util();
+//
+// function test() {
+//
+//     return function (_util) {
+//         _util.ll=1;
+//     }
+// }
+ let util=new Util();
+// util.use(test());
+// console.log(util.ll)
 //util.dirs(require('path').join(__dirname,'./bin')).then(rows=>console.log(rows))
 module.exports =util;
