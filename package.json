@@ -1,32 +1,24 @@
 {
   "name": "co-util",
-  "version": "0.1.21",
-  "description": "codeorg utility ",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "version": "1.0.53",
+  "description": "codeorg utility for nodejs",
+  "main": "lib/index.js",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "lodash": "^4.17.4",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.18.1",
+    "rimraf": "^2.6.1",
+    "uuid": "^3.0.1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/codeorg/co-util.git"
+  "scripts": {
+    "test": "ava --verbose ./test/*.test.js"
   },
   "keywords": [
+    "util",
     "utility",
-    "nodejs"
+    "codeorg.com"
   ],
   "author": "codeorg.com",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/codeorg/co-util/issues"
-  },
-  "homepage": "https://github.com/codeorg/co-util#readme",
-  "dependencies": {
-    "bcrypt": "^0.8.7",
-    "lodash": "^4.17.2",
-    "log4js": "^1.0.1",
-    "mkdirp": "^0.5.1",
-    "moment": "^2.16.0",
-    "node-uuid": "^1.4.7",
-    "rimraf": "^2.5.4"
-  }
+  "license": "ISC"
 }
