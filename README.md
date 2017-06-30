@@ -20,7 +20,7 @@ let buffer=await util.fs.readGzip(path);
 
 ```
 ## Functions
-'''js
+```js
     util.isString(str)
     util.uuid()
     util.isObject(value)
