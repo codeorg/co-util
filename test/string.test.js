@@ -21,9 +21,12 @@ test('util.trim()',t=>{
 test('util.formatIp(str)',t=>{
     t.is(util.formatIp('ffffff:127.0.0.1'),'127.0.0.1');
     t.is(util.formatIp('127.0.0.1:80'),'127.0.0.1');
+    t.is(util.formatIp('百草枯127.0.0.1:80'),'127.0.0.1');
 })
 test('util.format(f,[param1...])',t=>{
     t.is(util.format('df sf fs dfdddg%sg','在'),'df sf fs dfdddg在g');
     t.is(util.format('%s在在在在%sf f %s',1,2,3),'1在在在在2f f 3')
     t.is(util.format('%s在在在在%sf f %s',1,2),'1在在在在2f f %s')
+    t.is(util.format('%s在在在在%sf f %s',1,2),'1在在在在2f f %s')
+    t.is(util.format('%s',{a:1}),'{"a":1}')
 })

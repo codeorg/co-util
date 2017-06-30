@@ -1,6 +1,6 @@
 {
   "name": "co-util",
-  "version": "1.0.53",
+  "version": "1.0.55",
   "description": "codeorg utility for nodejs",
   "main": "lib/index.js",
   "dependencies": {
