@@ -25,3 +25,12 @@ test('util.toStream(string|buffer)', async t => {
     t.is(await util.toString((util.toStream('aaaaa'))), 'aaaaa');
     t.is(await util.toString((util.toStream(Buffer.from('fsdfdsf1')))), 'fsdfdsf1');
 });
+
+
+test('util.qs.stringify(object)', t => {
+    t.is(util.qs.stringify({a:1,b:2}), 'a=1&b=2');
+});
+
+test('util.qs.parse(string)', t => {
+    t.deepEqual(util.qs.parse('a=1&b=2'), {a:"1",b:"2"});
+});

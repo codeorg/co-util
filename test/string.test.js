@@ -8,12 +8,9 @@ test('util.isString(str)',t=>{
 test('util.uuid()',t=>{
     let str=util.uuid();
     t.is(util.isString(str),true);
-    t.is(str.length,36);
+    t.is(str.length,32);
 })
-test('util.querystring(obj)',t=>{
-    let obj={a:111,b:"d在",c:"100.10"}
-    t.is(util.querystring(obj),'a=111&b=d在&c=100.10');
-})
+
 test('util.trim()',t=>{
     t.is(util.trim(' fdsfdsf   '),'fdsfdsf');
     t.is(util.trim('ddd ddd '),'ddd ddd')
