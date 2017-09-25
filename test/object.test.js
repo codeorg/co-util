@@ -1,5 +1,14 @@
 import test from 'ava';
 import util from '../lib/';
+
+test('util.is(value,other)', t => {
+    t.is(util.is({ a: 1 }, { a: 1 }), true);
+    t.is(util.is({ b: { b: 2 }, a: 1 }, { a: 1, b: { b: 2 } }), true);
+    t.is(util.is({ a: 2 }, { a: 1 }), false);
+    t.is(util.is(1, 1), true);
+    t.is(util.is("a", "a"), true);
+})
+
 test('util.isObject(value)', t => {
     t.is(util.isObject({}), true);
     t.is(util.isObject([1, 2]), true);

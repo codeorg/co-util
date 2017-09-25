@@ -46,7 +46,6 @@ util.maxBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n')  //{ n: 3, c: 
 util.min([1, 2, 3, 4, 5]) //1
 util.minBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n') //{ n: 1, a: 2 })
 util.sort([5, 4, 3, 2, 1]) //[1, 2, 3, 4, 5]
-util.sort(array)
 ```
 
 

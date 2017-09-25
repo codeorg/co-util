@@ -1,7 +1,7 @@
 {
   "name": "co-util",
-  "version": "1.0.60",
-  "description": "codeorg utility for nodejs",
+  "version": "1.0.62",
+  "description": "A collection of utilities for nodejs.",
   "main": "lib/index.js",
   "dependencies": {
     "bluebird": "^3.5.0",
