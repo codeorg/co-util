@@ -73,32 +73,44 @@ test('util.find(objects,cons)', t => {
     t.deepEqual(util.find([{ n: 1 }, { n: 2, a: 22 }, { n: 3 }], [{ n: 5 }]), []);
     t.deepEqual(util.find([{ n: 1 }, { n: 2, a: 22 }, { n: 3 }], [{ s: 1 }]), []);
 })
-test('util.map(objects,key)',t=>{
-    t.deepEqual(util.map([{a:1},{a:2}], 'a'),[1,2]);
+test('util.map(objects,key)', t => {
+    t.deepEqual(util.map([{ a: 1 }, { a: 2 }], 'a'), [1, 2]);
 })
 
 test('util.max(array)', t => {
     t.deepEqual(util.max([1, 2, 3, 4, 5]), 5);
     t.deepEqual(util.max(['a', 'b', 'e', 'c', 'd']), 'e');
     t.deepEqual(util.max([]), undefined);
+
+    t.deepEqual(util.max([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n'), { n: 3, c: 1 });
+    t.deepEqual(util.max([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'e'), undefined);
 })
 
-test('util.maxBy(array,key)', t => {
-    t.deepEqual(util.maxBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n'), { n: 3, c: 1 });
-    t.deepEqual(util.maxBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'e'), undefined);
-})
+// test('util.maxBy(array,key)', t => {
+//     t.deepEqual(util.maxBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n'), { n: 3, c: 1 });
+//     t.deepEqual(util.maxBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'e'), undefined);
+// })
+
 test('util.min(array)', t => {
     t.deepEqual(util.min([1, 2, 3, 4, 5]), 1);
     t.deepEqual(util.min(['a', 'b', 'c', 'd', 'e']), 'a');
+
+    t.deepEqual(util.min([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n'), { n: 1, a: 2 });
+    t.deepEqual(util.min([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'e'), undefined);
+    t.deepEqual(util.min([], 'e'), undefined);
 })
-test('util.minBy(array,key)', t => {
-    t.deepEqual(util.minBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n'), { n: 1, a: 2 });
-    t.deepEqual(util.minBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'e'), undefined);
-    t.deepEqual(util.minBy([], 'e'), undefined);
-})
+// test('util.minBy(array,key)', t => {
+//     t.deepEqual(util.minBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'n'), { n: 1, a: 2 });
+//     t.deepEqual(util.minBy([{ n: 1, a: 2 }, { n: 2, a: 5 }, { n: 3, c: 1 }], 'e'), undefined);
+//     t.deepEqual(util.minBy([], 'e'), undefined);
+// })
 test('util.sort(array)', t => {
     t.deepEqual(util.sort([5, 4, 3, 2, 1]), [1, 2, 3, 4, 5]);
     t.deepEqual(util.sort([5, 4]), [4, 5]);
+})
+
+test('util.kv(array,key)', t => {
+    t.deepEqual(util.kv([{ id: "key1", b: 2 }, { id: "key2", b: 3 }], 'id'), { "key1": { id: "key1", b: 2 }, "key2": { id: "key2", b: 3 } });
 })
 
 

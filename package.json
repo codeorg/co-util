@@ -1,8 +1,12 @@
 {
   "name": "co-util",
-  "version": "1.0.62",
+  "version": "1.0.75",
   "description": "A collection of utilities for nodejs.",
   "main": "lib/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codeorg/co-util.git"
+  },
   "dependencies": {
     "bluebird": "^3.5.0",
     "lodash": "^4.17.4",
@@ -20,5 +24,8 @@
     "codeorg.com"
   ],
   "author": "codeorg.com",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "ava": "0.25.0"
+  }
 }

@@ -27,3 +27,8 @@ test('util.format(f,[param1...])',t=>{
     t.is(util.format('%s在在在在%sf f %s',1,2),'1在在在在2f f %s')
     t.is(util.format('%s',{a:1}),'{"a":1}')
 })
+
+test('util.encodeUrl(obj)',t=>{
+    t.is(util.encodeUrl('asdad在'),'asdad%E5%9C%A8');
+  
+})
