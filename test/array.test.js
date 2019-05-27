@@ -40,11 +40,14 @@ test('util.dropRight(arr,num)', t => {
 test('util.xor()', t => {
     console.log('----', util.xor([1, 2, 6, 6], [1, 2, 3, 4, 5], [1, 7], [8]))
     t.deepEqual(util.xor([1, 2], [1, 2, 3, 4, 5]), [3, 4, 5]);
-    t.deepEqual(util.xor([{a:1,b:2},{a:10,c:2},{d:2}], [{c:1},{a:1,b:2}]), [{a:10,c:2},{d:2},{c:1}]);
+    t.deepEqual(util.xor([{a: 1, b: 2}, {a: 10, c: 2}, {d: 2}], [{c: 1}, {a: 1, b: 2}]), [{
+        a: 10,
+        c: 2
+    }, {d: 2}, {c: 1}]);
 });
 test('util.notIn()', t => {
     t.deepEqual(util.notIn([1, 2, 3, 4, 5], [1, 2, 5]), [3, 4]);
-    t.deepEqual(util.notIn([{a:1,b:2},{a:10,c:2},{d:2}], [{c:1},{a:1,b:2}]), [{a:10,c:2},{d:2}]);
+    t.deepEqual(util.notIn([{a: 1, b: 2}, {a: 10, c: 2}, {d: 2}], [{c: 1}, {a: 1, b: 2}]), [{a: 10, c: 2}, {d: 2}]);
 });
 
 test('util.concat(arr1,arr2,arr3,[arr...])', t => {
@@ -52,6 +55,11 @@ test('util.concat(arr1,arr2,arr3,[arr...])', t => {
     t.deepEqual(util.concat([1, 2, 3], [5, 6], [2, 3]), [1, 2, 3, 5, 6, 2, 3]);
     t.deepEqual(util.concat([1, 2, 3], []), [1, 2, 3]);
     t.deepEqual(util.concat([], []), []);
+})
+
+test('util.compact(arr)', t => {
+    //console.log('fromNow------',util.fromNow('2019-05-27 14:04:00'))
+    t.deepEqual(util.compact([0, 1, false, 2, '', null, 3]), [1, 2, 3]);
 })
 
 test('util.indexOf(array,value)', t => {
