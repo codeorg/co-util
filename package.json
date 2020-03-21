@@ -1,6 +1,6 @@
 {
   "name": "co-util",
-  "version": "1.0.96",
+  "version": "1.0.97",
   "description": "A collection of utilities for nodejs.",
   "main": "lib/index.js",
   "repository": {
