@@ -53,3 +53,10 @@ test('util.formatMoney(value)', t => {
     
 })
 
+test('util.toFixed(num,bit)', t => {
+    t.is(util.toFixed(10,1) , '10');
+    t.is(util.toFixed(0,1) , '0');
+    t.is(util.toFixed(10.988888,2) , '10.99');
+
+})
+
